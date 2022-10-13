@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste SP2</title>
+</head>
+
+<body>
+    <h1>Teste Sprint 2</h1>
+    Digite o máximo de pessoas em um setor: <input type="text" id="iptQtdMax">
+    <button onclick="simular()">Simular fluxo</button>
+    <div id="res"></div>
+</body>
+
+</html>
+<script>
+    var valores = [];
+    var capacidadeMax = Number(iptQtdMax.value)
+    var i = 0
+    var qtd = 0
+
+    function simular() {
+
+        setInterval(function geraValores() {
+
+            const valoresRandom = parseInt(Math.random(0, 1).toFixed());
+            valores.push(valoresRandom);
+
+            const fluxo = valores.filter(function (count) {
+                if (count == 1) {
+                    return count;
+                }
+            });
+            qtd = fluxo.length;
+
+            res.innerHTML += `${qtd} pessoas no setor<br>`
+            console.log(fluxo)
+            console.log(i)
+
+        }, 1000)
+    }
+
+</script>
