@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: sandbox
+  datasource:
+    url: jdbc:h2:mem:school;
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+    initialization-mode: always
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  endpoint:
+    prometheus:
+      enabled: true
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http.server.requests: true
+      percentiles:
+        http.server.requests: 0.5, 0.95
+      sla:
+        http.server.requests:
+          - 0.1
+          - 0.2
+          - 0.5
+          - 1
+          - 2
+          - 3
+          - 5
+    web:
+      server:
+        request:
+          autotime:
+            enabled: true

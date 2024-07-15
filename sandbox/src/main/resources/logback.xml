@@ -1,0 +1,19 @@
+<configuration>
+    <!-- Template de log -->
+    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n"/>
+    <property name="LOG_PATTERN2" value="%d{yyyy-MM-dd HH:mm:ss} [%-5level] %logger{36} - %msg%n"/>
+
+    <!-- Appender para onde irá aparecer os logs, nesse caso no console -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!-- Template escolhido -->
+            <pattern>${LOG_PATTERN2}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Configuração do Nível de Log -->
+    <root level="info">
+        <appender-ref ref="CONSOLE" />
+    </root>
+
+</configuration>
